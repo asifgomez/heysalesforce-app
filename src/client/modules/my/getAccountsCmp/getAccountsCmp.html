@@ -1,0 +1,12 @@
+<template>
+        <lightning-button label="Get Accounts from Salesforce" title="Non-primary action" onclick={handleClick} ></lightning-button>
+
+        <div class="slds-m-around_medium">
+            <template for:each={returnedAcc} for:item="acc">
+                    <lightning-card  key={acc.Id} title={acc.Name}>
+                        <p >Indusrty: {acc.Industry}</p>
+                        <p >Website: {acc.Website}</p>
+                    </lightning-card>
+            </template>
+        </div>    
+</template>
