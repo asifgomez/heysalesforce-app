@@ -10,5 +10,4 @@ export default class GetAccountsCmp extends LightningElement {
       console.log(result);
     });
   }
-
 }
