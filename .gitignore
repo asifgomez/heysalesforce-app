@@ -21,7 +21,7 @@ node_modules
 
 # MacOS system files
 .DS_Store
-
+.env
 # Windows system files
 Thumbs.db
 ehthumbs.db
