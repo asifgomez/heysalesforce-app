@@ -1,12 +1,36 @@
 <template>
-        <lightning-button label="Get Accounts from Salesforce" title="Non-primary action" onclick={handleClick} ></lightning-button>
+    <div class="center">
+        <lightning-button class="margin" label="Fetch User Details" title="Non-primary action" onclick={fetchUsers}>
+        </lightning-button>
+        <br />
+        <template if:false={returnedrespobj}>
+            <lightning-button class="margin" label="Create object from UI" title="Non-primary action"
+                onclick={createObject}></lightning-button>
+            <br />
+        </template>
+        <template if:true={returnedrespobj}>
+            <lightning-button class="margin" label="Create a tab" title="Non-primary action" onclick={createTab}>
+            </lightning-button>
+            <br />
+            <lightning-button class="margin" label="Give Access to Profile" title="Non-primary action"
+                onclick={assignPermission}></lightning-button>
+        </template>
 
-        <div class="slds-m-around_medium">
-            <template for:each={returnedAcc} for:item="acc">
-                    <lightning-card  key={acc.Id} title={acc.Name}>
-                        <p >Indusrty: {acc.Industry}</p>
-                        <p >Website: {acc.Website}</p>
-                    </lightning-card>
+        <!--lightning-button class="margin" label="Get Accounts from Salesforce" title="Non-primary action" onclick={handleClick} ></lightning-button-->
+        <template for:each={returnedAcc} for:item="acc">
+            <lightning-card key={acc.Id} title={acc.Name}>
+                <p>Indusrty: {acc.Industry}</p>
+                <p>Website: {acc.Website}</p>
+            </lightning-card>
+        </template>
+        <template if:true={users}>
+            <template for:each={users} for:item="usr">
+                <lightning-card key={usr.id} title={usr.name}>
+                    <p>Email: {usr.email}</p>
+                    <p>Username: {usr.username}</p>
+                </lightning-card>
             </template>
-        </div>    
+        </template>
+
+    </div>
 </template>
